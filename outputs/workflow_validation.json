@@ -1,0 +1,10 @@
+{
+  "bottom_course": "ACC 6540 Professional Ethics",
+  "has_contiguous_eligible_ranks": true,
+  "has_missing_eligible_rank": false,
+  "is_sorted_descending": true,
+  "min_taken_threshold": 10,
+  "num_eligible_courses": 18,
+  "num_ranked_courses": 19,
+  "top_course": "ACC 6150 Info Sys Audit"
+}

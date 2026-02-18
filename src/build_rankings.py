@@ -7,6 +7,7 @@ Uses only Python standard library so it can run in minimal CI environments.
 from __future__ import annotations
 
 import csv
+import json
 import re
 import statistics
 import zipfile
@@ -373,6 +374,65 @@ def write_ordered_bar_chart(path: Path, summary_rows: List[dict]) -> None:
     svg_lines.append("</svg>")
     path.write_text("\n".join(svg_lines) + "\n", encoding="utf-8")
 
+
+
+def write_json(path: Path, payload: dict) -> None:
+    path.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+
+
+def validate_rankings(summary_rows: List[dict], min_taken: int) -> dict:
+    eligible = [row for row in summary_rows if row["taken_count"] >= min_taken]
+
+    sorted_desc = True
+    for i in range(len(summary_rows) - 1):
+        if summary_rows[i]["net_preference_score"] < summary_rows[i + 1]["net_preference_score"]:
+            sorted_desc = False
+            break
+
+    contiguous_eligible = True
+    for idx, row in enumerate(eligible, start=1):
+        if row.get("eligible_rank") != idx:
+            contiguous_eligible = False
+            break
+
+    missing_eligible_rank = any((row["taken_count"] >= min_taken and row.get("eligible_rank") == "") for row in summary_rows)
+
+    return {
+        "min_taken_threshold": min_taken,
+        "num_ranked_courses": len(summary_rows),
+        "num_eligible_courses": len(eligible),
+        "is_sorted_descending": sorted_desc,
+        "has_contiguous_eligible_ranks": contiguous_eligible,
+        "has_missing_eligible_rank": missing_eligible_rank,
+        "top_course": eligible[0]["course"] if eligible else "",
+        "bottom_course": eligible[-1]["course"] if eligible else "",
+    }
+
+
+def write_rank_extremes(path: Path, summary_rows: List[dict], min_taken: int, n: int = 5) -> None:
+    eligible = [row for row in summary_rows if row["taken_count"] >= min_taken]
+    top_rows = eligible[:n]
+    bottom_rows = list(reversed(eligible[-n:]))
+
+    lines = [
+        "# Most and Least Liked Courses",
+        "",
+        f"Threshold: courses with at least **{min_taken}** taken responses.",
+        "",
+        f"## Top {len(top_rows)} most liked",
+        "",
+        "| Rank | Course | Net Preference | Taken |",
+        "|---:|---|---:|---:|",
+    ]
+    for row in top_rows:
+        lines.append(f"| {row['eligible_rank']} | {row['course']} | {row['net_preference_score']:.3f} | {row['taken_count']} |")
+
+    lines.extend(["", f"## Bottom {len(bottom_rows)} least liked", "", "| Rank | Course | Net Preference | Taken |", "|---:|---|---:|---:|"])
+    for row in bottom_rows:
+        lines.append(f"| {row['eligible_rank']} | {row['course']} | {row['net_preference_score']:.3f} | {row['taken_count']} |")
+
+    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
 def main() -> None:
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -438,8 +498,12 @@ def main() -> None:
         top_n=10,
         min_taken=min_taken_threshold,
     )
+    write_rank_extremes(OUTPUT_DIR / "most_vs_least_liked.md", summary, min_taken=min_taken_threshold, n=5)
     write_svg_chart(OUTPUT_DIR / "course_rankings.svg", summary_min_taken, max_bars=12)
     write_ordered_bar_chart(OUTPUT_DIR / "course_rankings_most_to_least.svg", summary_min_taken)
+
+    validation = validate_rankings(summary, min_taken=min_taken_threshold)
+    write_json(OUTPUT_DIR / "workflow_validation.json", validation)
 
     print(f"Processed {len(data_rows)} responses into {len(long_rows)} tidy ranking rows.")
     print(f"Ranked {len(summary)} courses. Outputs saved to: {OUTPUT_DIR.resolve()}")

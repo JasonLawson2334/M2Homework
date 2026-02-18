@@ -45,6 +45,8 @@ python src/build_rankings.py
 - `outputs/ranking_summary.md` — readable top ranking table.
 - `outputs/course_rankings.svg` — figure of top eligible courses by net preference.
 - `outputs/course_rankings_most_to_least.svg` — ordered bar chart from most liked to least liked classes.
+- `outputs/most_vs_least_liked.md` — quick top-5 and bottom-5 table for eligible courses.
+- `outputs/workflow_validation.json` — deterministic validation checks for ranking order and rank consistency.
 
 ## GitHub Actions
 
