@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="650" viewBox="0 0 1100 650">
+<style>text{font-family:Arial,sans-serif;} .title{font-size:24px;font-weight:bold;} .subtitle{font-size:14px;fill:#333;} .label{font-size:14px;} .axis{font-size:12px;fill:#444;} </style>
+<text x="420" y="40" class="title">Top Courses by Net Preference Score</text>
+<text x="420" y="62" class="subtitle">Score = (Most Beneficial - Least Beneficial) / Taken responses</text>
+<line x1="420" y1="80" x2="1020" y2="80" stroke="#ddd"/>
+<line x1="420" y1="590" x2="1020" y2="590" stroke="#ddd"/>
+<line x1="720.0" y1="80" x2="720.0" y2="590" stroke="#888" stroke-dasharray="4,4"/>
+<line x1="420.0" y1="590" x2="420.0" y2="596" stroke="#999"/>
+<text x="420.0" y="614" text-anchor="middle" class="axis">-1</text>
+<line x1="570.0" y1="590" x2="570.0" y2="596" stroke="#999"/>
+<text x="570.0" y="614" text-anchor="middle" class="axis">-0.5</text>
+<line x1="720.0" y1="590" x2="720.0" y2="596" stroke="#999"/>
+<text x="720.0" y="614" text-anchor="middle" class="axis">0</text>
+<line x1="870.0" y1="590" x2="870.0" y2="596" stroke="#999"/>
+<text x="870.0" y="614" text-anchor="middle" class="axis">0.5</text>
+<line x1="1020.0" y1="590" x2="1020.0" y2="596" stroke="#999"/>
+<text x="1020.0" y="614" text-anchor="middle" class="axis">1</text>
+<rect x="720.0" y="80" width="260.8695" height="35" fill="#1f77b4" opacity="0.9"/>
+<text x="410" y="102.5" text-anchor="end" class="label">1. ACC 6150 Info Sys Audit</text>
+<text x="988.8695" y="102.5" text-anchor="start" class="label">0.870</text>
+<rect x="720.0" y="123" width="223.25580000000002" height="35" fill="#1f77b4" opacity="0.9"/>
+<text x="410" y="145.5" text-anchor="end" class="label">2. ACC 6400 Advanced Tax Business Entities</text>
+<text x="951.2558" y="145.5" text-anchor="start" class="label">0.744</text>
+<rect x="720.0" y="166" width="209.4339" height="35" fill="#1f77b4" opacity="0.9"/>
+<text x="410" y="188.5" text-anchor="end" class="label">3. ACC 6060 Professionalism and Leadership</text>
+<text x="937.4339" y="188.5" text-anchor="start" class="label">0.698</text>
+<rect x="720.0" y="209" width="200.00009999999997" height="35" fill="#1f77b4" opacity="0.9"/>
+<text x="410" y="231.5" text-anchor="end" class="label">4. ACC 6600 Business Law for Accountants (if taken as an elective)</text>
+<text x="928.0001" y="231.5" text-anchor="start" class="label">0.667</text>
+<rect x="720.0" y="252" width="194.1177" height="35" fill="#1f77b4" opacity="0.9"/>
+<text x="410" y="274.5" text-anchor="end" class="label">5. ACC 6600 Business Law for Accountants</text>
+<text x="922.1177" y="274.5" text-anchor="start" class="label">0.647</text>
+<rect x="720.0" y="295" width="184.61549999999988" height="35" fill="#1f77b4" opacity="0.9"/>
+<text x="410" y="317.5" text-anchor="end" class="label">6. ACC 6410 Tax Research & Procedure</text>
+<text x="912.6154999999999" y="317.5" text-anchor="start" class="label">0.615</text>
+<rect x="720.0" y="338" width="178.125" height="35" fill="#1f77b4" opacity="0.9"/>
+<text x="410" y="360.5" text-anchor="end" class="label">7. ACC 6300 Data Analytics</text>
+<text x="906.125" y="360.5" text-anchor="start" class="label">0.594</text>
+<rect x="720.0" y="381" width="173.68409999999994" height="35" fill="#1f77b4" opacity="0.9"/>
+<text x="410" y="403.5" text-anchor="end" class="label">8. ACC 6420 Corporate Tax</text>
+<text x="901.6841" y="403.5" text-anchor="start" class="label">0.579</text>
+<rect x="720.0" y="424" width="94.73670000000004" height="35" fill="#1f77b4" opacity="0.9"/>
+<text x="410" y="446.5" text-anchor="end" class="label">9. ACC 6140 Fraud Exam & Forensic Acc</text>
+<text x="822.7367" y="446.5" text-anchor="start" class="label">0.316</text>
+<rect x="720.0" y="467" width="93.75" height="35" fill="#1f77b4" opacity="0.9"/>
+<text x="410" y="489.5" text-anchor="end" class="label">10. ACC 6350 Mgmt Control Sys (if taken as an elective)</text>
+<text x="821.75" y="489.5" text-anchor="start" class="label">0.312</text>
+<rect x="720.0" y="510" width="88.23540000000003" height="35" fill="#1f77b4" opacity="0.9"/>
+<text x="410" y="532.5" text-anchor="end" class="label">11. ACC 6250 Financial Reporting and Analysis</text>
+<text x="816.2354" y="532.5" text-anchor="start" class="label">0.294</text>
+<rect x="720.0" y="553" width="80.76929999999993" height="35" fill="#1f77b4" opacity="0.9"/>
+<text x="410" y="575.5" text-anchor="end" class="label">12. ACC 6560 Financial Theory & Research I</text>
+<text x="808.7692999999999" y="575.5" text-anchor="start" class="label">0.269</text>
+</svg>

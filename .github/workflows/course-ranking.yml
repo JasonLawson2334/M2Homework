@@ -1,0 +1,36 @@
+name: Course Ranking Workflow
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'data/Grad Program Exit Survey Data.xlsx'
+      - 'src/build_rankings.py'
+      - '.github/workflows/course-ranking.yml'
+      - 'requirements.txt'
+
+jobs:
+  build-rankings:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Generate ranking outputs
+        run: python src/build_rankings.py
+
+      - name: Upload ranking outputs artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: course-ranking-outputs
+          path: outputs/
+          if-no-files-found: error
